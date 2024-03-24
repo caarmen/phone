@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/client.css" />
+  <script type="module">
+    import { setup } from "./js/client.js"
+    document.addEventListener('DOMContentLoaded', () => {
+      setup(
+        document.getElementById('text-input'),
+        document.getElementById('foo'),
+        );
+    });
+  </script>
+</head>
+
+<body>
+  <div style="background-color:#EEF;" id="text-input" contenteditable="true" spellcheck="false"></div>
+  <pre style="background-color:#EFE;" id="foo"></pre>
+
+</body>
+
+</html>
