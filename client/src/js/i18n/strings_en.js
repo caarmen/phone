@@ -1,0 +1,16 @@
+export const STRINGS = {
+    title: " Retro Chat ",
+    createRoom: "Create a room:",
+    joinRoom: "Join the room:",
+    roomNameLabel: "Room name:",
+    roomNameHint: "Room name",
+    participantNameLabel: "Your name:",
+    participantNameHint: "Your name",
+    createRoomSubmit: "Create",
+    joinRoomSubmit: "Join",
+    toggleTheme: "Toggle theme",
+    ok: "Ok",
+    errorRoomFull: "This room is full",
+    errorRoomNotFound: "Couldn't find that room",
+    errorOops: "Oops something went wrong",
+};

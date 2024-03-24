@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/client.css" />
+  <script type="module">
+    import { main } from "./js/main.js"
+    document.addEventListener('DOMContentLoaded', () => {
+      main();
+    });
+  </script>
+</head>
+
+<body>
+
+  <div id="main" class="main">
+    <div id="start" class="form-container">
+      <div data-i18n="createRoom"></div>
+      <form id="form-create-room">
+        <div class="form-row">
+          <label for="room_name" data-i18n="roomNameLabel"></label>
+          <input type="text" name="room_name" data-i18n-placeholder="roomNameHint" required />
+        </div>
+        <div class="form-row">
+          <label for="participant_name" data-i18n="participantNameLabel"></label>
+          <input type="text" name="participant_name" data-i18n-placeholder="participantNameHint" required />
+        </div>
+        <input type="submit" name="submit" data-i18n-value="createRoomSubmit" />
+      </form>
+    </div>
+    <div id="join" class="form-container">
+      <div data-i18n="joinRoom"></div>
+      <form id="form-join-room">
+        <div class="form-row">
+          <label for="participant_name" data-i18n="participantNameLabel"></label>
+          <input type="text" name="participant_name" data-i18n-placeholder="participantNameHint" required />
+        </div>
+        <input type="submit" name="submit" data-i18n-value="joinRoomSubmit" />
+      </form>
+    </div>
+    <div id="terminal" class="terminal">
+      <button id="toggle-theme" type="button" data-i18n="toggleTheme"></button>
+      <div class="terminal__top-bar">
+        <div id="placeholder" class="placeholder">XX-XXX-XXXX</div>
+        <div id="title" class="title" data-i18n="title"></div>
+        <div id="date" class="date"></div>
+      </div>
+      <div class="terminal__command-bar">%</div>
+      <div id="participants"></div>
+    </div>
+    <div class="dialog__overlay">
+      <div class="dialog">
+        <div class="dialog__message"></div>
+        <button class="dialog__button" data-i18n="ok"></button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
