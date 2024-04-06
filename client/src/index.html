@@ -7,19 +7,35 @@
   <link rel="stylesheet" type="text/css" href="css/client.css" />
   <script type="module">
     import { setup } from "./js/client.js"
+    import { strings } from "./js/i18n/i18n.js"
+    import { getNowDateString } from "./js/date.js"
+    import { adjustFontSize } from "./js/fontsize.js"
     document.addEventListener('DOMContentLoaded', () => {
-      setup(
-        document.getElementById('text-input'),
-        document.getElementById('foo'),
-        );
+      const roomId = new URLSearchParams(window.location.search).get("room");
+      setup(roomId, document.getElementById('participants'));
+      document.getElementById("title").innerText = strings.title;
+      document.getElementById("placeholder").innerText = getNowDateString();
+      document.getElementById("date").innerText = getNowDateString();
+      const terminal = document.getElementById("terminal");
+      adjustFontSize(terminal);
+      window.addEventListener("resize", () => adjustFontSize(terminal));
     });
   </script>
 </head>
 
 <body>
-  <div style="background-color:#EEF;" id="text-input" contenteditable="true" spellcheck="false"></div>
-  <pre style="background-color:#EFE;" id="foo"></pre>
-
+  <div class="main">
+    <div id="terminal" class="terminal">
+      <div class="terminal__top-bar">
+        <div id="placeholder" class="placeholder"></div>
+        <div id="title" class="title"></div>
+        <div id="date" class="date"></div>
+      </div>
+      <div class="terminal__command-bar">%</div>
+      <div id="participants"></div>
+    </div>
+    <div class="controls"></div>
+  </div>
 </body>
 
 </html>

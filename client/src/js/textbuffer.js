@@ -2,6 +2,7 @@ export const KEYCODE_BACKSPACE = 8;
 export const KEYCODE_ENTER = 13;
 export const KEYCODE_META = 91;
 const MAX_CHARS_PER_LINE = 80;
+const MAX_LINES_PER_SCREEN = 24;
 export const TEXT_NEWLINE = "\r\n";
 
 /**
@@ -45,7 +46,7 @@ export function processInput(inputText, keyCode, key = '', maxLines = 6) {
  * @param {Integer} maxLines  max number of lines allowed per text
  * @returns {String} modified text
  */
-function trimLeadingLines(inputText, maxLines) {
+export function trimLeadingLines(inputText, maxLines) {
     const text = inputText + " "; // add an extra space to make sure we have a token if the last line is a newline without text yet
     const lines = text.split(TEXT_NEWLINE);
     const trimmedLines = lines.length > maxLines ? lines.slice(-maxLines) : lines;
@@ -74,4 +75,10 @@ function wrapLastWord(inputText) {
         return inputText.substring(0, indexOfLastSpace) + TEXT_NEWLINE + inputText.substring(indexOfLastSpace + 1);
     }
     return inputText + TEXT_NEWLINE;
+}
+
+export function getTextLinesPerParticipant(pariticpantCount) {
+    const unavailableFixedLines = 4; // header
+    const unavailableLinesPerParticipant = 2; // divider + name
+    return Math.floor((MAX_LINES_PER_SCREEN - unavailableFixedLines - pariticpantCount * unavailableLinesPerParticipant) / pariticpantCount);
 }
