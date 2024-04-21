@@ -5,7 +5,7 @@ from urllib.parse import parse_qs
 import socketio
 
 from phone.domain import usecases
-from phone.domain.entities.typedevent import InputTypedEvent, TypedEvent, BeepEvent
+from phone.domain.entities.typedevent import BeepEvent, InputTypedEvent, TypedEvent
 from phone.domain.repositories.roomrepository import RoomRepository
 from phone.domain.usecases.request_user_join_room import request_user_join_room
 from phone.domain.usecases.user_leave_room import user_leave_room
@@ -31,10 +31,8 @@ class Room(socketio.AsyncNamespace):
                 room=room,
                 data={
                     "sid": changed_participant_id,
-                    "participants": [
-                        asdict(x) for x in room_participants
-                    ]
-                }
+                    "participants": [asdict(x) for x in room_participants],
+                },
             )
 
     def _get_room_ids(self, sid: str) -> list[str]:
@@ -43,7 +41,7 @@ class Room(socketio.AsyncNamespace):
 
     async def on_connect(self, sid, environ):
         logger.debug(f"connect: {sid}")
-        query_params = parse_qs(environ['QUERY_STRING'])
+        query_params = parse_qs(environ["QUERY_STRING"])
         room_id = query_params.get("room_id")[0]
         requested_participant_name = query_params.get("participant_name")[0]
 
@@ -90,7 +88,9 @@ class Room(socketio.AsyncNamespace):
         logger.debug(f"typed {sid}: args {args}")
 
         input_typed_event = InputTypedEvent(**args[0])
-        typed_event: TypedEvent = usecases.map_input_typed_event_to_typed_event(input_typed_event)
+        typed_event: TypedEvent = usecases.map_input_typed_event_to_typed_event(
+            input_typed_event
+        )
         room_ids = self._get_room_ids(sid)
         if typed_event is BeepEvent:
             await self.emit(

@@ -4,16 +4,13 @@ from dataclasses import asdict
 from redis.asyncio import Redis
 
 from phone.domain.entities.room import Room
-from phone.domain.repositories.roomrepository import RoomRepository
 from phone.domain.entities.user import User
+from phone.domain.repositories.roomrepository import RoomRepository
 
 
 class RedisRoomRepository(RoomRepository):
 
-    def __init__(
-        self,
-        redis: Redis
-    ):
+    def __init__(self, redis: Redis):
         self.redis = redis
 
     async def create_room(
@@ -24,16 +21,19 @@ class RedisRoomRepository(RoomRepository):
             id=str(uuid.uuid4()),
             name=room_name,
         )
-        await self.redis.hset(f'room:{room.id}', mapping=asdict(room))
+        await self.redis.hset(f"room:{room.id}", mapping=asdict(room))
         return room
 
     async def get_room(
         self,
         room_id: str,
     ) -> Room | None:
-        room_data = await self.redis.hgetall(f'room:{room_id}')
+        room_data = await self.redis.hgetall(f"room:{room_id}")
         if room_data:
-            room_data_str = {key.decode('utf-8'): value.decode('utf-8') for key, value in room_data.items()}
+            room_data_str = {
+                key.decode("utf-8"): value.decode("utf-8")
+                for key, value in room_data.items()
+            }
             return Room(**room_data_str)
         else:
             return None
@@ -43,8 +43,8 @@ class RedisRoomRepository(RoomRepository):
         room_id: str,
     ):
         await self.redis.delete(
-            f'room:{room_id}:users',
-            f'room:{room_id}',
+            f"room:{room_id}:users",
+            f"room:{room_id}",
         )
 
     async def create_user(
@@ -56,13 +56,13 @@ class RedisRoomRepository(RoomRepository):
             id=user_id,
             name=user_name,
         )
-        await self.redis.hset(f'user:{user_id}', mapping=asdict(user))
+        await self.redis.hset(f"user:{user_id}", mapping=asdict(user))
 
     async def delete_user(
         self,
         user_id: str,
     ):
-        await self.redis.delete(f'user:{user_id}')
+        await self.redis.delete(f"user:{user_id}")
 
     async def add_user_to_room(
         self,
@@ -97,5 +97,6 @@ class RedisRoomRepository(RoomRepository):
             User(
                 id=user_id.decode("utf-8"),
                 name=user_name.decode("utf-8"),
-            ) for user_id, user_name in users.items()
+            )
+            for user_id, user_name in users.items()
         ]

@@ -20,8 +20,7 @@ http_app = Flask(
 )
 http_app.logger.removeHandler(default_handler)
 logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(levelname)-10s[%(name)s] %(message)s"
+    level=logging.DEBUG, format="%(levelname)-10s[%(name)s] %(message)s"
 )
 if settings.cors_allowed_origins:
     CORS(http_app, origins=settings.cors_allowed_origins)

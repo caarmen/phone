@@ -1,1 +1,5 @@
+-r prod.txt
+black==24.4.0
+isort==5.13.2
 pytest==8.1.1
+ruff==0.4.1

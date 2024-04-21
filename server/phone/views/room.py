@@ -1,15 +1,16 @@
 import logging
 from dataclasses import asdict
 
-from flask import Blueprint, jsonify, abort, request
+from flask import Blueprint, abort, jsonify, request
 from flask.views import MethodView
 
 from phone.domain.repositories.roomrepository import RoomRepository
 from phone.settings import MAX_PARTICIPANTS_PER_ROOM
 
-bp = Blueprint('room', __name__, url_prefix='/room')
+bp = Blueprint("room", __name__, url_prefix="/room")
 
 logger = logging.getLogger(__name__)
+
 
 class RoomView(MethodView):
     def __init__(self, room_repo: RoomRepository):
@@ -25,7 +26,10 @@ class RoomView(MethodView):
         logger.debug(f"Get room {room_id}")
         room = await self.room_repo.get_room(room_id=room_id)
         if room:
-            if len((await self.room_repo.get_users_in_room(room_id))) >= MAX_PARTICIPANTS_PER_ROOM:
+            if (
+                len((await self.room_repo.get_users_in_room(room_id)))
+                >= MAX_PARTICIPANTS_PER_ROOM
+            ):
                 logger.warning(f"room {room_id}:{room.name} is full")
                 abort(403)
             return jsonify(asdict(room))
