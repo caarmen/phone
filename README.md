@@ -14,6 +14,12 @@ docker compose up --build
 ```
 Open the application in your web browser: http://localhost:8000/client/index.html
 
+#### Green theme
+<img src="docs/green.png">
+
+#### Amber theme
+<img src="docs/amber.png">
+
 ### From the hosted docker image
 
 Coming soon...
