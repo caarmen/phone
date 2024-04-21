@@ -7,13 +7,14 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "test": "mocha -r test/env.js",
+    "test": "c8 --reporter=html mocha -r test/env.js",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint src test"
   },
   "devDependencies": {
     "chai": "^5.1.0",
+    "c8": "^9.1.0",
     "eslint": "^8.57.0",
     "eslint-plugin-jsdoc": "^48.2.3",
     "mocha": "^10.4.0",
