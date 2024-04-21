@@ -7,7 +7,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "test": "c8 --reporter=html mocha -r test/env.js",
+    "test": "c8 --reporter=html --report-dir reports mocha -r test/env.js",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint src test"
