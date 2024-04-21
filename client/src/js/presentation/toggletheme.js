@@ -1,7 +1,10 @@
+/**
+ * Toggle the current theme.
+ */
 export function toggleTheme() {
-    const isGreen = getComputedStyle(document.documentElement).getPropertyValue('--background-color') === getComputedStyle(document.documentElement).getPropertyValue('--green-background-color');
+    const isCurrentHueGreen = getComputedStyle(document.documentElement).getPropertyValue('--background-color') === getComputedStyle(document.documentElement).getPropertyValue('--green-background-color');
 
-    const hue = isGreen?  "amber" : "green";
-    document.documentElement.style.setProperty('--background-color', `var(--${hue}-background-color)`);
-    document.documentElement.style.setProperty('--foreground-color', `var(--${hue}-foreground-color)`);
+    const newHue = isCurrentHueGreen?  "amber" : "green";
+    document.documentElement.style.setProperty('--background-color', `var(--${newHue}-background-color)`);
+    document.documentElement.style.setProperty('--foreground-color', `var(--${newHue}-foreground-color)`);
 }

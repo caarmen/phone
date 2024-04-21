@@ -6,11 +6,10 @@ export const TEXT_NEWLINE = "\r\n";
 
 /**
  * Process the given input.
- *
- * @param {String} inputText text before input was received
- * @param {String} key received input key
- * @param {Integer} maxLines  max number of lines allowed per text
- * @returns {String} modified text
+ * @param {string} inputText text before input was received
+ * @param {string} key received input key
+ * @param {number} maxLines  max number of lines allowed per text
+ * @returns {string} modified text
  */
 export function processInput(inputText, key = '', maxLines = 6) {
     if (key === KEY_BACKSPACE) {
@@ -39,10 +38,9 @@ export function processInput(inputText, key = '', maxLines = 6) {
 
 /**
  * Remove leading lines of the given text if the text content exceeds maxLines.
- *
- * @param {String} inputText input text
- * @param {Integer} maxLines  max number of lines allowed per text
- * @returns {String} modified text
+ * @param {string} inputText input text
+ * @param {number} maxLines  max number of lines allowed per text
+ * @returns {string} modified text
  */
 export function trimLeadingLines(inputText, maxLines) {
     const text = inputText + " "; // add an extra space to make sure we have a token if the last line is a newline without text yet
@@ -54,9 +52,8 @@ export function trimLeadingLines(inputText, maxLines) {
 
 /**
  * Puts the last word of the last line on a newline, unless there are no spaces preceding this last word.
- * 
- * @param {String} inputText input text
- * @returns {String} modified text
+ * @param {string} inputText input text
+ * @returns {string} modified text
  */
 function wrapLastWord(inputText) {
     let indexOfLastSpace = -1;
@@ -80,8 +77,13 @@ function wrapLastWord(inputText) {
     return inputText + TEXT_NEWLINE;
 }
 
-export function getTextLinesPerParticipant(pariticpantCount) {
+/**
+ * Get the number of lines of text each participant in a room can have.
+ * @param {number} participantCount the number of participants in a room.
+ * @returns {number} the number of lines for each participant in a room.
+ */
+export function getTextLinesPerParticipant(participantCount) {
     const unavailableFixedLines = 4; // header
     const unavailableLinesPerParticipant = 2; // divider + name
-    return Math.floor((MAX_LINES_PER_SCREEN - unavailableFixedLines - pariticpantCount * unavailableLinesPerParticipant) / pariticpantCount);
+    return Math.floor((MAX_LINES_PER_SCREEN - unavailableFixedLines - participantCount * unavailableLinesPerParticipant) / participantCount);
 }

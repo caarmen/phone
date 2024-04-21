@@ -4,7 +4,10 @@ module.exports = {
       "es2021": true,
       "mocha": true,
   },
-  "extends": "eslint:recommended",
+  "extends": [
+    "eslint:recommended",
+    "plugin:jsdoc/recommended",
+  ],
   "parserOptions": {
       "ecmaVersion": "latest",
       "sourceType": "module"
@@ -12,6 +15,9 @@ module.exports = {
   "globals": {
     "process": true,
   },
+  "plugins": [
+      "jsdoc"
+  ],
   "rules": {
     "consistent-return": 2,
     "indent"           : [1, 4],

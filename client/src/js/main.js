@@ -13,6 +13,9 @@ import { roomService } from "./infrastructure/http/room.js";
 
 const beep = new Audio(beepSound);
 
+/**
+ * Entry point to the application.
+ */
 export function main() {
     const home = Home();
     home.init();
@@ -43,9 +46,16 @@ export function main() {
     }
 }
 
+/**
+ * Enter the given room.
+ * @param {string} roomId the id of the room to enter.
+ * @param {string} participantName our requested participant name.
+ */
 async function enterRoom(roomId, participantName) {
     const participants = document.getElementById("participants");
     const dialog = document.querySelector(".dialog__overlay");
+
+    // Get the room details, showing a dialog if an error occurs.
     let room = null;
     try {
         room = await roomService.getRoom(roomId);
@@ -57,6 +67,7 @@ async function enterRoom(roomId, participantName) {
     }
     const roomEvents = RoomEvents();
 
+    // Subscribe to room events sent from the server.
     roomEvents.connect(
         roomId,
         participantName,
@@ -73,6 +84,7 @@ async function enterRoom(roomId, participantName) {
         }
     );
 
+    // Subscribe to browser typed events, so we can send them to the server.
     document.addEventListener(
         'keydown',
         (event) => {
