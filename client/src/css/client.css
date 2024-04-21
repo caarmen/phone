@@ -19,6 +19,8 @@ body {
     background-color: var(--background-color);
     color: var(--foreground-color);
     font-family: 'terminal';
+    margin: 0px;
+    padding: 0px;
 }
 
 .main {
@@ -47,18 +49,21 @@ input {
 
 .terminal {
     font-weight: 900;
-    font-style: normal;
-    width: 80ch;
-    flex-grow: 1;
 }
 
 .terminal__top-bar {
     display: flex;
     justify-content: space-between;
     white-space: pre;
-    width: 80ch;
 }
 
+.terminal__frame {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+    color: transparent;
+}
 .placeholder {
     visibility: hidden;
 }
@@ -69,20 +74,14 @@ input {
     color: var(--background-color);
 }
 
-.participant {
-    white-space: pre-wrap;
-}
-
 .participant__name {
     text-align: center;
-    width: 80ch;
 }
 
 .participant pre {
     height: calc(var(--lines-per-participant)*2.8ch);
     overflow-y: hidden;
     caret-color: transparent;
-    white-space: pre-wrap;
     font-family: 'terminal';
     margin: 0px;
 }
@@ -91,6 +90,7 @@ input {
 .terminal__command-bar::after {
     content: var(--divider);
     display: block;
+    white-space: pre;
 }
 
 .dialog__overlay {
@@ -136,3 +136,12 @@ input {
 input[type=text] {
     text-transform: uppercase;
 }
+.hidden-input {
+    height: 1px;
+    width: 1px;
+    opacity: 0%;
+ }
+ #open-keyboard {
+    border: none;
+    background-color: transparent;
+ }

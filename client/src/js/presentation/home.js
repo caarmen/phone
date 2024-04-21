@@ -28,6 +28,12 @@ export function Home() {
             toggleTheme();
         };
 
+        const openKeyboardButton = document.getElementById("open-keyboard");
+        const hiddenInput = document.querySelector(".hidden-input");
+        openKeyboardButton.onclick = () => {
+            hiddenInput.focus();
+        };
+
         // Set the current date display.
         const date = document.getElementById("date");
         date.innerText = getNowDateString();
@@ -82,10 +88,10 @@ export function Home() {
      */
     function showTerminal() {
         terminal.style.display = "block";
-        adjustFontSize(terminal);
+        adjustFontSize();
         start.style.display = "none";
         join.style.display = "none";
-        window.addEventListener("resize", () => adjustFontSize(terminal));
+        window.addEventListener("resize", () => adjustFontSize());
     }
 
     return {

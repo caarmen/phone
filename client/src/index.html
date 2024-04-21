@@ -41,6 +41,7 @@
       </form>
     </div>
     <div id="terminal" class="terminal">
+      <div class="terminal__frame"></div>
       <button id="toggle-theme" type="button" data-i18n="toggleTheme"></button>
       <div class="terminal__top-bar">
         <div id="placeholder" class="placeholder">XX-XXX-XXXX</div>
@@ -49,6 +50,10 @@
       </div>
       <div class="terminal__command-bar">%</div>
       <div id="participants"></div>
+      <button id="open-keyboard" type="submit">
+        <img src="./res/keyboard.svg" data-i18n-alt="openKeyboard" data-i18n-title="openKeyboard">
+      </button>
+      <input class="hidden-input" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" autofocus></input>
     </div>
     <div class="dialog__overlay">
       <div class="dialog">
