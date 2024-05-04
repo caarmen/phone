@@ -11,7 +11,7 @@ export const TEXT_NEWLINE = "\r\n";
  * @param {number} maxLines  max number of lines allowed per text
  * @returns {string} modified text
  */
-export function processInput(inputText, key = '', maxLines = 6) {
+export function processInput(inputText, key = "", maxLines = 6) {
     if (key === KEY_BACKSPACE) {
         if (inputText.endsWith(TEXT_NEWLINE)) {
             return inputText.slice(0, -2);

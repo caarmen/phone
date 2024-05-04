@@ -1,4 +1,4 @@
-import io from 'socket.io-client';
+import io from "socket.io-client";
 import { ReceivedTypedEvent, SentTypedEvent } from "../../domain/entities/typedevent.js";
 
 /**

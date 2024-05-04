@@ -1,5 +1,5 @@
-import { getTextLinesPerParticipant, processInput, trimLeadingLines } from '../domain/usecases/textbuffer.js';
-import { ReceivedTypedEvent } from '../domain/entities/typedevent.js';
+import { getTextLinesPerParticipant, processInput, trimLeadingLines } from "../domain/usecases/textbuffer.js";
+import { ReceivedTypedEvent } from "../domain/entities/typedevent.js";
 
 /**
  * Create an Element for the given participant.
@@ -9,7 +9,7 @@ import { ReceivedTypedEvent } from '../domain/entities/typedevent.js';
  * @returns {Element} the created Element.
  */
 function createParticipantElement(participantsElement, roomName, participant) {
-    const participantElement = document.createElement('div');
+    const participantElement = document.createElement("div");
     participantElement.dataset.pid = participant.id;
     participantElement.classList.add("participant");
     participantsElement.appendChild(participantElement);
@@ -53,7 +53,7 @@ export function updateParticipantElements(participantsElement, roomName, partici
         }
     );
     Array.from(participantsElement.querySelectorAll(".participant")).filter(
-        participantElement => !participants.some(participant => participant.id == participantElement.dataset.pid)
+        participantElement => !participants.some(participant => participant.id === participantElement.dataset.pid)
     ).forEach(leftParticipantElement => participantsElement.removeChild(leftParticipantElement));
 }
 
