@@ -84,19 +84,64 @@ async function enterRoom(roomId, participantName) {
         }
     );
 
+    const hiddenInput = document.querySelector(".hidden-input");
     // Subscribe to browser typed events, so we can send them to the server.
     const typedEventListener = (event) => {
-        if (event.tyoe === "keydown") {
+        if (event.type === "keydown") {
             document.removeEventListener("textInput", typedEventListener, true);
         } else if (event.type === "textinput") {
             document.removeEventListener("keydown", typedEventListener, true);
         }
+        console.log("typed event %o", event);
+        const key = event.key ?? event.data;
+        if (document.activeElement === hiddenInput && key.length === 1) {
+            return;
+        }
         roomEvents.sendTypedEvent(new SentTypedEvent(
-            event.key ?? event.data,
+            key,
             event.ctrlKey ?? false,
         ));
-        event.preventDefault();
     };
     document.addEventListener("keydown", typedEventListener, true);
     document.addEventListener("textInput", typedEventListener, true);
+    let hiddenInputSentCharsCount = 0;
+    hiddenInput.addEventListener("input", (event) =>{
+        console.log("input event %o", event);
+        const text = event.target.value;
+        if (event.inputType === "insertReplacementText") {
+            for (let i = 0; i < hiddenInputSentCharsCount; i++) {
+                roomEvents.sendTypedEvent(new SentTypedEvent(
+                    "Backspace",
+                    event.ctrlKey ?? false,
+                ));
+            }
+            for (let i = 0; i < text.length; i++) {
+                roomEvents.sendTypedEvent(new SentTypedEvent(
+                    event.key ?? text[i],
+                    event.ctrlKey ?? false,
+                ));
+            }
+            hiddenInputSentCharsCount = 0;
+            event.target.value = "";
+        }
+        if (event.inputType !== "insertText") {
+            hiddenInputSentCharsCount = 0;
+            event.target.value = "";
+            return;
+        }
+        console.log("input is now %o", event.target.value);
+        for (let i = hiddenInputSentCharsCount; i < text.length; i++) {
+            roomEvents.sendTypedEvent(new SentTypedEvent(
+                event.key ?? text[i],
+                event.ctrlKey ?? false,
+            ));
+        }
+        if (event.target.value === " ") {
+            hiddenInputSentCharsCount = 0;
+            event.target.value = "";
+        }
+        hiddenInputSentCharsCount = event.target.value.length;
+        //event.target.value = "";
+        //event.preventDefault();
+    } );
 }
