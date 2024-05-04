@@ -1,7 +1,7 @@
-import { assert } from 'chai';
-import { processInput, TEXT_NEWLINE, KEY_BACKSPACE, KEY_ENTER } from '../src/js/domain/usecases/textbuffer.js';
+import { assert } from "chai";
+import { processInput, TEXT_NEWLINE, KEY_BACKSPACE, KEY_ENTER } from "../src/js/domain/usecases/textbuffer.js";
 
-describe('Text buffer', function () {
+describe("Text buffer", function () {
 
     const scenarios = [
         {

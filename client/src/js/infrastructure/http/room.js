@@ -17,9 +17,9 @@ export const roomService = {
         const result = await fetch(
             `${process.env.VITE_BE_SERVER}room/`,
             {
-                method: 'POST',
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json'
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
                     name: roomName,
@@ -41,7 +41,7 @@ export const roomService = {
             `${process.env.VITE_BE_SERVER}room/${roomId}/`,
             {
                 headers: {
-                    'Content-Type': 'application/json'
+                    "Content-Type": "application/json"
                 },
             }
         );

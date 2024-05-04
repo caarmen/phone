@@ -1,5 +1,5 @@
 
-import beepSound from '../res/beep.wav';
+import beepSound from "../res/beep.wav";
 import { translateText } from "./i18n/i18n.js";
 
 import { showDialog } from "./presentation/dialog.js";
@@ -86,7 +86,7 @@ async function enterRoom(roomId, participantName) {
 
     // Subscribe to browser typed events, so we can send them to the server.
     document.addEventListener(
-        'keydown',
+        "keydown",
         (event) => {
             roomEvents.sendTypedEvent(new SentTypedEvent(
                 event.key,

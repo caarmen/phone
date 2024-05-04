@@ -29,15 +29,15 @@ export function translateText(key) {
  * @param {Element} containerElement the anscestor element for which the descendants should be translated.
  */
 export function translateElement(containerElement) {
-    Array.from(containerElement.querySelectorAll('[data-i18n]')).forEach(element =>{
+    Array.from(containerElement.querySelectorAll("[data-i18n]")).forEach(element =>{
         const key = element.dataset.i18n;
         element.innerText = translateText(key);
     });
-    Array.from(containerElement.querySelectorAll('[data-i18n-placeholder]')).forEach(element =>{
+    Array.from(containerElement.querySelectorAll("[data-i18n-placeholder]")).forEach(element =>{
         const key = element.dataset.i18nPlaceholder;
         element.placeholder = translateText(key);
     });
-    Array.from(containerElement.querySelectorAll('[data-i18n-value]')).forEach(element =>{
+    Array.from(containerElement.querySelectorAll("[data-i18n-value]")).forEach(element =>{
         const key = element.dataset.i18nValue;
         element.value = translateText(key);
     });
