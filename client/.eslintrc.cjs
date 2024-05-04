@@ -16,13 +16,16 @@ module.exports = {
     "process": true,
   },
   "plugins": [
-      "jsdoc"
+      "jsdoc",
+      "@stylistic/js"
   ],
   "rules": {
-    "consistent-return": 2,
-    "indent"           : [1, 4],
-    "no-else-return"   : 1,
-    "semi"             : [1, "always"],
-    "space-unary-ops"  : 2
+    "@stylistic/js/indent": ["error", 4],
+    "@stylistic/js/quotes": "error",
+    "@stylistic/js/semi": "error",
+    "@stylistic/js/space-unary-ops": "error",
+    "consistent-return": "error",
+    "eqeqeq": ["error", "always"],
+    "no-else-return": "error",
   }
 }
