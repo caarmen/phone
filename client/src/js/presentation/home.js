@@ -28,12 +28,6 @@ export function Home() {
             toggleTheme();
         };
 
-        const openKeyboardButton = document.getElementById("open-keyboard");
-        const hiddenInput = document.querySelector(".hidden-input");
-        openKeyboardButton.onclick = () => {
-            hiddenInput.focus();
-        };
-
         // Set the current date display.
         const date = document.getElementById("date");
         date.innerText = getNowDateString();

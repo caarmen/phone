@@ -1392,6 +1392,11 @@ signal-exit@^4.0.1:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-4.1.0.tgz#952188c1cbd546070e2dd20d0f41c0ae0530cb04"
   integrity sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==
 
+simple-keyboard@^3.7.78:
+  version "3.7.78"
+  resolved "https://registry.yarnpkg.com/simple-keyboard/-/simple-keyboard-3.7.78.tgz#e7acf9012f71e4b23ef122f0ee169525ffd7c118"
+  integrity sha512-EI03ROuGkvHsbkHOXoE4qx9ftMT73LismkSSaCunSidszmVscS3f8QTNskI6p9TlyEGI8+yB9/oXnSp3Roaqhg==
+
 socket.io-client@^4.7.5:
   version "4.7.5"
   resolved "https://registry.yarnpkg.com/socket.io-client/-/socket.io-client-4.7.5.tgz#919be76916989758bdc20eec63f7ee0ae45c05b7"

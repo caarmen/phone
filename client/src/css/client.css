@@ -64,6 +64,7 @@ input {
     z-index: -1;
     color: transparent;
 }
+
 .placeholder {
     visibility: hidden;
 }
@@ -101,7 +102,8 @@ input {
     height: 100%;
     /* semi-transparent overlay */
     background-color: rgba(0, 0, 0, 0.5);
-    display: none; /* flex to show it */
+    display: none;
+    /* flex to show it */
     justify-content: center;
     align-items: center;
     /* Ensure it's on top of everything */
@@ -133,15 +135,13 @@ input {
     border-width: 0px;
     outline: none;
 }
+
 input[type=text] {
     text-transform: uppercase;
 }
-.hidden-input {
-    height: 1px;
-    width: 1px;
-    opacity: 0%;
- }
- #open-keyboard {
+
+#open-keyboard {
     border: none;
     background-color: transparent;
- }
+    padding: 10px;
+}

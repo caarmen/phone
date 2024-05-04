@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=600, user-scalable=yes, maximum-scale=10.0, minimum-scale=0.1">
   <link rel="stylesheet" type="text/css" href="css/client.css" />
+  <link rel="stylesheet" type="text/css" href="css/keyboard.css" />
   <script type="module">
     import { main } from "./js/main.js"
     document.addEventListener('DOMContentLoaded', () => {
@@ -53,7 +54,7 @@
       <button id="open-keyboard" type="submit">
         <img src="./res/keyboard.svg" data-i18n-alt="openKeyboard" data-i18n-title="openKeyboard">
       </button>
-      <textarea rows="1" class="hidden-input" autofocus></textarea>
+      <div class="simple-keyboard"></div>
     </div>
     <div class="dialog__overlay">
       <div class="dialog">

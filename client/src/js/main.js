@@ -4,12 +4,14 @@ import { translateText } from "./i18n/i18n.js";
 import { showDialog } from "./presentation/dialog.js";
 import { Home } from "./presentation/home.js";
 import { Beep } from "./presentation/beep.js";
+import { subscribeSoftKeyboard } from "./presentation/softkeyboard.js";
 import { updateParticipantElements, receiveTypedEvent } from "./presentation/participants.js";
 
 import { SentTypedEvent } from "./domain/entities/typedevent.js";
 
 import { RoomEvents } from "./infrastructure/event/room.js";
 import { roomService } from "./infrastructure/http/room.js";
+
 
 /**
  * Entry point to the application.
@@ -84,64 +86,17 @@ async function enterRoom(roomId, participantName) {
         }
     );
 
-    const hiddenInput = document.querySelector(".hidden-input");
     // Subscribe to browser typed events, so we can send them to the server.
-    const typedEventListener = (event) => {
-        if (event.type === "keydown") {
-            document.removeEventListener("textInput", typedEventListener, true);
-        } else if (event.type === "textinput") {
-            document.removeEventListener("keydown", typedEventListener, true);
-        }
-        console.log("typed event %o", event);
-        const key = event.key ?? event.data;
-        if (document.activeElement === hiddenInput && key.length === 1) {
-            return;
-        }
-        roomEvents.sendTypedEvent(new SentTypedEvent(
-            key,
-            event.ctrlKey ?? false,
-        ));
-    };
-    document.addEventListener("keydown", typedEventListener, true);
-    document.addEventListener("textInput", typedEventListener, true);
-    let hiddenInputSentCharsCount = 0;
-    hiddenInput.addEventListener("input", (event) =>{
-        console.log("input event %o", event);
-        const text = event.target.value;
-        if (event.inputType === "insertReplacementText") {
-            for (let i = 0; i < hiddenInputSentCharsCount; i++) {
-                roomEvents.sendTypedEvent(new SentTypedEvent(
-                    "Backspace",
-                    event.ctrlKey ?? false,
-                ));
-            }
-            for (let i = 0; i < text.length; i++) {
-                roomEvents.sendTypedEvent(new SentTypedEvent(
-                    event.key ?? text[i],
-                    event.ctrlKey ?? false,
-                ));
-            }
-            hiddenInputSentCharsCount = 0;
-            event.target.value = "";
-        }
-        if (event.inputType !== "insertText") {
-            hiddenInputSentCharsCount = 0;
-            event.target.value = "";
-            return;
-        }
-        console.log("input is now %o", event.target.value);
-        for (let i = hiddenInputSentCharsCount; i < text.length; i++) {
+    document.addEventListener(
+        "keydown",
+        (event) => {
             roomEvents.sendTypedEvent(new SentTypedEvent(
-                event.key ?? text[i],
-                event.ctrlKey ?? false,
+                event.key,
+                event.ctrlKey,
             ));
-        }
-        if (event.target.value === " ") {
-            hiddenInputSentCharsCount = 0;
-            event.target.value = "";
-        }
-        hiddenInputSentCharsCount = event.target.value.length;
-        //event.target.value = "";
-        //event.preventDefault();
-    } );
+        },
+        true,
+    );
+
+    subscribeSoftKeyboard((sentTypedEvent) => roomEvents.sendTypedEvent(sentTypedEvent));
 }

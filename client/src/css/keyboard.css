@@ -1,0 +1,61 @@
+/**
+ * based on:
+ * https://hodgef.com/simple-keyboard/editor/?d=hodgef/simple-keyboard-npm-demos/tree/terminal-theme
+ */
+
+.simple-keyboard.hg-theme-terminal.hg-theme-default .hg-row .hg-button {
+    flex-grow: 1;
+    cursor: pointer;
+    font-size: 35px;
+}
+
+.simple-keyboard.hg-theme-terminal .hg-row {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.simple-keyboard.hg-theme-terminal .hg-row:nth-child(2) {
+    margin-left: 18px;
+}
+
+.simple-keyboard.hg-theme-terminal.hg-theme-default {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.simple-keyboard.hg-theme-terminal.hg-theme-default .hg-button {
+    border-radius: 2px;
+    background: #ffffee;
+    border-bottom: 1px solid #b5b5b5;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    height: 60px;
+    color: black;
+}
+
+.simple-keyboard.hg-theme-terminal.hg-theme-default .hg-button:active,
+.simple-keyboard.hg-theme-terminal.hg-theme-default .hg-button:focus {
+    background: #e4e4d4;
+}
+
+.simple-keyboard.hg-theme-terminal.hg-theme-default .hg-button.hg-functionBtn {
+    background-color: #bbb5ad;
+}
+.simple-keyboard.hg-theme-terminal.hg-theme-default .hg-button.hg-functionBtn span {
+    font-size: 0.8em;
+}
+
+.simple-keyboard.hg-theme-terminal.hg-theme-default .hg-button.hg-button-space {
+    background-color: #ffffee;
+}
+
+.simple-keyboard.hg-theme-terminal.hg-theme-default .hg-row .hg-button-alt,
+.simple-keyboard.hg-theme-terminal.hg-theme-default .hg-row .hg-button-default {
+    max-width: 120px;
+}
+
+.simple-keyboard.hg-theme-terminal.hg-theme-default .hg-row .hg-button-bksp {
+    font-size: 2.0em;
+}

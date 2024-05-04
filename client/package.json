@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "dotenv": "^16.4.5",
-    "socket.io-client": "^4.7.5"
+    "socket.io-client": "^4.7.5",
+    "simple-keyboard": "^3.7.78"
   }
 }
