@@ -9,6 +9,7 @@ export const STRINGS = {
     createRoomSubmit: "Create",
     joinRoomSubmit: "Join",
     toggleTheme: "Toggle theme",
+    openKeyboard: "Open soft keyboard (for mobile)",
     ok: "Ok",
     errorRoomFull: "This room is full",
     errorRoomNotFound: "Couldn't find that room",

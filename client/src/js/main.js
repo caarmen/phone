@@ -1,9 +1,10 @@
 
-import beepSound from "../res/beep.wav";
 import { translateText } from "./i18n/i18n.js";
 
 import { showDialog } from "./presentation/dialog.js";
 import { Home } from "./presentation/home.js";
+import { Beep } from "./presentation/beep.js";
+import { subscribeSoftKeyboard } from "./presentation/softkeyboard.js";
 import { updateParticipantElements, receiveTypedEvent } from "./presentation/participants.js";
 
 import { SentTypedEvent } from "./domain/entities/typedevent.js";
@@ -11,7 +12,6 @@ import { SentTypedEvent } from "./domain/entities/typedevent.js";
 import { RoomEvents } from "./infrastructure/event/room.js";
 import { roomService } from "./infrastructure/http/room.js";
 
-const beep = new Audio(beepSound);
 
 /**
  * Entry point to the application.
@@ -65,6 +65,8 @@ async function enterRoom(roomId, participantName) {
         });
         return;
     }
+
+    const beep = Beep();
     const roomEvents = RoomEvents();
 
     // Subscribe to room events sent from the server.
@@ -92,8 +94,9 @@ async function enterRoom(roomId, participantName) {
                 event.key,
                 event.ctrlKey,
             ));
-            event.preventDefault();
         },
         true,
     );
+
+    subscribeSoftKeyboard((sentTypedEvent) => roomEvents.sendTypedEvent(sentTypedEvent));
 }

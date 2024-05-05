@@ -33,12 +33,10 @@ export function translateElement(containerElement) {
         const key = element.dataset.i18n;
         element.innerText = translateText(key);
     });
-    Array.from(containerElement.querySelectorAll("[data-i18n-placeholder]")).forEach(element =>{
-        const key = element.dataset.i18nPlaceholder;
-        element.placeholder = translateText(key);
-    });
-    Array.from(containerElement.querySelectorAll("[data-i18n-value]")).forEach(element =>{
-        const key = element.dataset.i18nValue;
-        element.value = translateText(key);
+    ["Placeholder", "Value", "Alt", "Title"].forEach((attribute) =>{
+        Array.from(containerElement.querySelectorAll(`[data-i18n-${attribute.toLowerCase()}]`)).forEach(element =>{
+            const key = element.dataset[`i18n${attribute}`];
+            element[attribute.toLowerCase()]= translateText(key);
+        });
     });
 }

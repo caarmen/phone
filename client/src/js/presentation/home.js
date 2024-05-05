@@ -82,10 +82,10 @@ export function Home() {
      */
     function showTerminal() {
         terminal.style.display = "block";
-        adjustFontSize(terminal);
+        adjustFontSize();
         start.style.display = "none";
         join.style.display = "none";
-        window.addEventListener("resize", () => adjustFontSize(terminal));
+        window.addEventListener("resize", () => adjustFontSize());
     }
 
     return {
