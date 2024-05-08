@@ -9,7 +9,7 @@ services:
       - redis
     build:
       context: ..
-      dockerfile: docker/Dockerfile
+      dockerfile: Dockerfile
       target: phone_web_base
     ports:
       - '8000:8000'
