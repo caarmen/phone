@@ -1,4 +1,4 @@
-FROM python:3.12.2-slim
+FROM python:3.12.2-slim AS phone_web_base
 
 # ===============================
 
@@ -39,3 +39,14 @@ RUN pip install -r server/requirements.txt
 
 # Run the backend
 CMD PYTHONPATH=/app/server python -m phone.main
+
+### Build a fat docker image containing redis.
+# This is not a best practice, as it includes multiple
+# services in one image.
+FROM phone_web_base AS phone_web_fat
+
+RUN apt-get update && apt-get install -y redis-server supervisor && \
+    rm -rf /var/lib/apt/lists/*
+COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+EXPOSE 8000
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
