@@ -8,8 +8,9 @@ services:
     depends_on:
       - redis
     build:
-      context: .
+      context: ..
       dockerfile: Dockerfile
+      target: phone_web_base
     ports:
       - '8000:8000'
     volumes:
