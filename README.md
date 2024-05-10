@@ -23,10 +23,12 @@ The details of these options are provided just below.
 
 You'll need the [docker/compose-prebuilt.yml](docker/compose-prebuilt.yml) file. You can either clone this project or copy the contents of just that file to your machine.
 
-Then run `docker-compose` specifying this file:
+Then run `docker-compose` specifying this file.
+
+Or, in one line, fetching the file with `curl`:
 
 ```
-docker-compose --file docker/compose-prebuilt.yml up
+curl https://raw.githubusercontent.com/caarmen/retro-chat/main/docker/compose-prebuilt.yml | docker-compose -f - up
 ```
 
 Open the application in your web browser: http://localhost:8000/client/index.html
