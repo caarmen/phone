@@ -1,5 +1,5 @@
 error=0
-for project in phone tests
+for project in retrochat tests
 do
   black $project --check || error=$?
   ruff check $project --output-format=github || error=$?

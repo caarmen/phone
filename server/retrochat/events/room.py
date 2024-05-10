@@ -4,11 +4,11 @@ from urllib.parse import parse_qs
 
 import socketio
 
-from phone.domain import usecases
-from phone.domain.entities.typedevent import BeepEvent, InputTypedEvent, TypedEvent
-from phone.domain.repositories.roomrepository import RoomRepository
-from phone.domain.usecases.request_user_join_room import request_user_join_room
-from phone.domain.usecases.user_leave_room import user_leave_room
+from retrochat.domain import usecases
+from retrochat.domain.entities.typedevent import BeepEvent, InputTypedEvent, TypedEvent
+from retrochat.domain.repositories.roomrepository import RoomRepository
+from retrochat.domain.usecases.request_user_join_room import request_user_join_room
+from retrochat.domain.usecases.user_leave_room import user_leave_room
 
 logger = logging.getLogger(__name__)
 

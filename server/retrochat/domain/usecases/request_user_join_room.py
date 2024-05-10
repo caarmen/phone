@@ -1,8 +1,8 @@
 import logging
 
-from phone.domain.repositories.roomrepository import RoomRepository
-from phone.domain.usecases import select_participant_name
-from phone.settings import MAX_PARTICIPANTS_PER_ROOM
+from retrochat.domain.repositories.roomrepository import RoomRepository
+from retrochat.domain.usecases import select_participant_name
+from retrochat.settings import MAX_PARTICIPANTS_PER_ROOM
 
 logger = logging.getLogger(__name__)
 

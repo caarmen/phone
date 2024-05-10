@@ -8,10 +8,10 @@ from flask.logging import default_handler
 from flask_cors import CORS
 from redis.asyncio import Redis
 
-from phone.data.redisroomrepository import RedisRoomRepository
-from phone.events.room import Room
-from phone.settings import settings
-from phone.views.room import register as register_bp_room
+from retrochat.data.redisroomrepository import RedisRoomRepository
+from retrochat.events.room import Room
+from retrochat.settings import settings
+from retrochat.views.room import register as register_bp_room
 
 http_app = Flask(
     __name__,

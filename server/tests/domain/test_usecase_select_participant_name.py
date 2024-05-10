@@ -1,6 +1,6 @@
 import pytest
 
-from phone.domain.usecases import select_participant_name
+from retrochat.domain.usecases import select_participant_name
 
 
 @pytest.mark.parametrize(

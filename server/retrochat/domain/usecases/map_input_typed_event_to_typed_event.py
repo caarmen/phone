@@ -1,4 +1,4 @@
-from phone.domain.entities.typedevent import (
+from retrochat.domain.entities.typedevent import (
     BeepEvent,
     InputTypedEvent,
     TextEvent,

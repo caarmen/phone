@@ -1,7 +1,7 @@
 from abc import ABC
 
-from phone.domain.entities.room import Room
-from phone.domain.entities.user import User
+from retrochat.domain.entities.room import Room
+from retrochat.domain.entities.user import User
 
 
 class RoomRepository(ABC):

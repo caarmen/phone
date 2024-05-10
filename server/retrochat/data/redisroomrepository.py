@@ -3,9 +3,9 @@ from dataclasses import asdict
 
 from redis.asyncio import Redis
 
-from phone.domain.entities.room import Room
-from phone.domain.entities.user import User
-from phone.domain.repositories.roomrepository import RoomRepository
+from retrochat.domain.entities.room import Room
+from retrochat.domain.entities.user import User
+from retrochat.domain.repositories.roomrepository import RoomRepository
 
 
 class RedisRoomRepository(RoomRepository):

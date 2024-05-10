@@ -1,4 +1,4 @@
-FROM python:3.12.2-slim AS phone_web_base
+FROM python:3.12.2-slim AS retrochat_web_base
 
 # ===============================
 
@@ -32,18 +32,18 @@ WORKDIR /app
 
 # Copy backend files
 COPY server/requirements/prod.txt server/requirements.txt
-COPY server/phone server/phone
+COPY server/retrochat server/retrochat
 
 # Build the backend
 RUN pip install -r server/requirements.txt
 
 # Run the backend
-CMD PYTHONPATH=/app/server python -m phone.main
+CMD PYTHONPATH=/app/server python -m retrochat.main
 
 ### Build a fat docker image containing redis.
 # This is not a best practice, as it includes multiple
 # services in one image.
-FROM phone_web_base AS phone_web_fat
+FROM retrochat_web_base AS retrochat_web_fat
 
 RUN apt-get update && apt-get install -y redis-server supervisor && \
     rm -rf /var/lib/apt/lists/*
