@@ -6,7 +6,7 @@ services:
   web:
     depends_on:
       - redis
-    image: ghcr.io/caarmen/phone
+    image: ghcr.io/caarmen/retrochat
     ports:
       - '8000:8000'
     volumes:

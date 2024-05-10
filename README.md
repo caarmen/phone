@@ -15,7 +15,7 @@ It is inspired by [Unix talk](https://en.wikipedia.org/wiki/Talk_(software)) and
 It's possible to run the application:
 * From the docker image hosted on the ghcr.io.
 * From the sources in this project.
-* In development mode, running redis from Docker and the phone server and client directly on the local machine.
+* In development mode, running redis from Docker and the retrochat server and client directly on the local machine.
 
 The details of these options are provided just below.
 
@@ -53,7 +53,7 @@ docker compose --file docker/compose-build.yaml up redis
   - Copy `.env.template` to `.env`
   - Set `REDIS_DSN="redis://localhost:6379/"`
   - Set `CORS_ALLOWED_ORIGINS` to contain the host of your local webapp. To access it from your machine, set `CORS_ALLOWED_ORIGINS=["http://localhost:5173"]`. 
-* Run the server: `python -m phone.main`.
+* Run the server: `python -m retrochat.main`.
 
 #### Client
 * Go into the `client` folder.
@@ -76,4 +76,4 @@ For example, if your machine is at 192.168.1.12:
 CORS_ALLOWED_ORIGINS=["http://localhost:5173", "http://192.168.1.12:8000"]
 ```
 
-Restart the server (`python -m phone.main`) and access the application at http://192.168.1.12:8000/client/index.html.
+Restart the server (`python -m retrochat.main`) and access the application at http://192.168.1.12:8000/client/index.html.

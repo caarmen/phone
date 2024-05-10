@@ -1,4 +1,4 @@
-from phone.domain.repositories.roomrepository import RoomRepository
+from retrochat.domain.repositories.roomrepository import RoomRepository
 
 
 async def user_leave_room(

@@ -10,7 +10,7 @@ services:
     build:
       context: ..
       dockerfile: Dockerfile
-      target: phone_web_base
+      target: retrochat_web_base
     ports:
       - '8000:8000'
     volumes:

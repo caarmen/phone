@@ -4,8 +4,8 @@ from dataclasses import asdict
 from flask import Blueprint, abort, jsonify, request
 from flask.views import MethodView
 
-from phone.domain.repositories.roomrepository import RoomRepository
-from phone.settings import MAX_PARTICIPANTS_PER_ROOM
+from retrochat.domain.repositories.roomrepository import RoomRepository
+from retrochat.settings import MAX_PARTICIPANTS_PER_ROOM
 
 bp = Blueprint("room", __name__, url_prefix="/room")
 
