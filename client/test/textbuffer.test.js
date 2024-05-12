@@ -66,6 +66,18 @@ describe("Text buffer", function () {
             key: "!",
             expectedNewText: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporum${TEXT_NEWLINE}hello there!`,
         },
+        {
+            name: "should replace linefeed character with newline token",
+            originalText: "hello",
+            key: "\n",
+            expectedNewText: `hello${TEXT_NEWLINE}`,
+        },
+        {
+            name: "should replace carriage return character with newline token",
+            originalText: "hello",
+            key: "\r",
+            expectedNewText: `hello${TEXT_NEWLINE}`,
+        },
     ];
 
     scenarios.forEach(scenario => {
