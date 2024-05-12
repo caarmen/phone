@@ -21,7 +21,7 @@ export function processInput(inputText, key = "", maxLines = 6) {
         }
         return inputText;
     }
-    if (key === KEY_ENTER) {
+    if ([KEY_ENTER, "\n", "\r"].includes(key)) {
         return trimLeadingLines(inputText + TEXT_NEWLINE, maxLines);
     }
     if (key.length !== 1) {
