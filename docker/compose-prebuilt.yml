@@ -9,5 +9,7 @@ services:
     image: ghcr.io/caarmen/retro-chat
     ports:
       - '8000:8000'
-    volumes:
-      - ${ENV_FILE_PATH:-${PWD}/.env}:/app/server/.env
+# Comment out the below if you need to set some variables in
+# a .env file (see the README.md)
+#    volumes:
+#      - ${ENV_FILE_PATH:-${PWD}/.env}:/app/server/.env
